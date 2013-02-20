@@ -6,3 +6,5 @@ rewrite ^/projects/team-infrastructure(.*)$ /projects/team-server-public$1 perma
 rewrite ^/projects/typo3-v5-core(.*)$ /projects/typo3neos-team$1 permanent;
 rewrite ^/projects/typo3-v5(.*)$ /projects/typo3neos$1 permanent;
 
+# old URLs /projects/show/extension-blabla are not supported in redmine 1.4
+rewrite ^/projects/show/(.*)$ /projects/$1 permanent;

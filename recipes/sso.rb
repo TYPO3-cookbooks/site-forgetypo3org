@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: site-forgetypo3org
-# Recipe:: default
+# Recipe:: sso
 #
 # Copyright 2013, Steffen Gebert / TYPO3 Association
 #
@@ -18,32 +18,30 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
-%w{
-  libxslt-dev
-  libxml2-dev
-}.each do |pkg|
-  package pkg
+['sso', 'sso/tmp', 'sso/log'].each do |dir|
+  directory "/home/redmine/#{dir}" do
+    owner "redmine"
+    group "redmine"
+  end
 end
 
-####################################
-# nginx
-####################################
-
-# replace the nginx-site file
-
-chef_gem "chef-rewind"
-require 'chef/rewind'
-
-include_recipe "redmine::nginx"
-
-rewind :template => "/etc/nginx/sites-available/#{node.redmine.hostname}" do
-  cookbook_name "site-forgetypo3org"
+['sigsso.conf', 'redmine_sso.php', 'sigsso_public.key'].each do |file|
+  template "/home/redmine/sso/#{file}" do
+    source "sso/#{file}.erb"
+    owner "redmine"
+    group "redmine"
+    mode 0644
+  end
 end
 
-template "/etc/nginx/redirects.conf" do
-  source "nginx/redirects.erb"
-  notifies :reload, "service[nginx]"
+template "#{node.redmine.dir}/public/scripts/sigsso.php" do
+  source "sso/sigsso.php.erb"
+  owner "redmine"
+  group "redmine"
 end
 
-include_recipe "site-forgetypo3org::php"
-include_recipe "site-forgetypo3org::sso"
+template "#{node.redmine.dir}/public/scripts/loginredirect.php" do
+  source "sso/loginredirect.php.erb"
+  owner "redmine"
+  group "redmine"
+end

@@ -68,7 +68,7 @@ server {
 
 <% if node.platform == 'debian' && node.lsb.codename == 'squeeze' %>
       # needed for nginx in Debian squeeze
-      # fastcgi_param   SCRIPT_FILENAME         $request_filename;
+      fastcgi_param   SCRIPT_FILENAME         $request_filename;
 <% end %>
       # fastcgi_param PHP_VALUE $php_value;
 

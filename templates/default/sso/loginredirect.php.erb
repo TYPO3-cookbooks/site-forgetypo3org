@@ -1,0 +1,16 @@
+<?php
+
+$redirectUrl = 'https://typo3.org/my-account/sso/forge<% if node['redmine']['hostname'] == "dev.forge.typo3.org" %>dev<% end %>/';
+
+$absoluteRefererUrl = $_SERVER["HTTP_REFERER"];
+
+if (!empty($absoluteRefererUrl) && filter_var($absoluteRefererUrl, FILTER_VALIDATE_URL)) {
+	$parsedUrl = parse_url($absoluteRefererUrl);
+	if ($parsedUrl['host'] === 'dev.forge.typo3.org') {
+		$redirectUrl .= '?returnTo=' . rawurlencode(ltrim($parsedUrl['path'], '/'));
+	}
+
+}
+
+header('Location: ' . $redirectUrl);
+exit;
