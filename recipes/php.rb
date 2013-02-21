@@ -81,6 +81,15 @@ php_fpm 'redmine' do
   port 9000
 end
 
-node.set['php']['secure_functions'] = false;
+# suhosin
+package "php5-suhosin"
+
+template "/etc/php5/conf.d/suhosin.ini" do
+  source "php/suhosin.ini"
+  mode 0644
+  notifies :restart, "service[php5-fpm]"
+end
+
+node.set['php']['secure_functions'] = false
 
 package "php5-mysql"
