@@ -2,10 +2,17 @@
 ### Configuration for redmine with thin.
 
 server {
-    listen 80; # IPv4 socket listening on all addresses.
-    ## Replace the IPv6 address by your own address. The address below
-    ## was stolen from the wikipedia page on IPv6.
-    #listen [fe80::202:b3ff:fe1e:8329]:80 ipv6only=on;
+    listen 80;
+    server_name <%= node.redmine.hostname %>;
+    rewrite ^ https://$server_name$request_uri? permanent;
+}
+
+server {
+    listen 443;
+
+    ssl on;
+    ssl_certificate <%= @ssl_certfile %>;
+    ssl_certificate_key  <%= @ssl_keyfile %>;
 
     server_name <%= node.redmine.hostname %>;
     ## Access and error logs.

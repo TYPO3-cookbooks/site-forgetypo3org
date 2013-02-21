@@ -36,14 +36,20 @@ require 'chef/rewind'
 
 include_recipe "redmine::nginx"
 
+ssl_certificate node['site-forgetypo3org']['ssl_certificate']
+
 rewind :template => "/etc/nginx/sites-available/#{node.redmine.hostname}" do
   cookbook_name "site-forgetypo3org"
+  variables(
+    :ssl_certfile => node['ssl_certificates']['path'] + "/" + node['site-forgetypo3org']['ssl_certificate'] + ".crt",
+    :ssl_keyfile  => node['ssl_certificates']['path'] + "/" + node['site-forgetypo3org']['ssl_certificate'] + ".key"
+  )
 end
 
-template "/etc/nginx/redirects.conf" do
-  source "nginx/redirects.erb"
-  notifies :reload, "service[nginx]"
-end
+####################################
+# other recipes
+####################################
 
 include_recipe "site-forgetypo3org::php"
 include_recipe "site-forgetypo3org::sso"
+include_recipe "site-forgetypo3org::svn"
