@@ -18,6 +18,12 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+#############################
+# PHP5-FPM
+#############################
+
+# add repositories
+
 case node['platform']
   when 'ubuntu'
     if node['platform_version'].to_f <= 10.04
@@ -73,6 +79,11 @@ case node['platform']
 end
 
 include_recipe "php::fpm"
+package "php5-mysql"
+
+#############################
+# PHP5-FPM instance
+#############################
 
 php_fpm 'redmine' do
   user 'redmine'
@@ -81,7 +92,10 @@ php_fpm 'redmine' do
   port 9000
 end
 
-# suhosin
+#############################
+# Suhosin & Security
+#############################
+
 package "php5-suhosin"
 
 template "/etc/php5/conf.d/suhosin.ini" do
@@ -91,5 +105,3 @@ template "/etc/php5/conf.d/suhosin.ini" do
 end
 
 node.set['php']['secure_functions'] = false
-
-package "php5-mysql"
