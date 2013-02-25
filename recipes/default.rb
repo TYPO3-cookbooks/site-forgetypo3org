@@ -18,12 +18,23 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 
+
+####################################
+# prerequisites
+####################################
+
 %w{
   libxslt-dev
   libxml2-dev
 }.each do |pkg|
   package pkg
 end
+
+####################################
+# include main recipe
+####################################
+
+include_recipe "redmine"
 
 ####################################
 # nginx
@@ -44,6 +55,12 @@ rewind :template => "/etc/nginx/sites-available/#{node.redmine.hostname}" do
     :ssl_certfile => node['ssl_certificates']['path'] + "/" + node['site-forgetypo3org']['ssl_certificate'] + ".crt",
     :ssl_keyfile  => node['ssl_certificates']['path'] + "/" + node['site-forgetypo3org']['ssl_certificate'] + ".key"
   )
+end
+
+template "/etc/nginx/redirects.conf" do
+  source "nginx/redirects.erb"
+  owner node[:nginx][:user]
+  mode 0644
 end
 
 ####################################

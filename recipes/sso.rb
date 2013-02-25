@@ -34,13 +34,13 @@ end
   end
 end
 
-template "#{node.redmine.dir}/public/scripts/sigsso.php" do
+template "#{node.redmine.deploy_to}/current/public/scripts/sigsso.php" do
   source "sso/sigsso.php.erb"
   owner "redmine"
   group "redmine"
 end
 
-template "#{node.redmine.dir}/public/scripts/loginredirect.php" do
+template "#{node.redmine.deploy_to}/current/public/scripts/loginredirect.php" do
   source "sso/loginredirect.php.erb"
   owner "redmine"
   group "redmine"
