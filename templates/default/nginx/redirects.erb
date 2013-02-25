@@ -1,5 +1,5 @@
 rewrite ^/login$ /scripts/loginredirect.php last;
-rewrite ^/account/register$ http::/typo3.org/community/your-account/loginlogout last;
+rewrite ^/account/register$ http://typo3.org/community/your-account/loginlogout last;
 rewrite ^/my/password$ http://typo3.org/community/your-account/loginlogout/user last;
 
 rewrite ^/projects/team-infrastructure(.*)$ /projects/team-server-public$1 permanent;
