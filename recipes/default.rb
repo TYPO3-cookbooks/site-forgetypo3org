@@ -30,6 +30,13 @@
   package pkg
 end
 
+
+####################################
+# install a recent nginx version
+####################################
+
+include_recipe "nginx::repo"
+
 ####################################
 # include main recipe
 ####################################
