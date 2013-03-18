@@ -43,6 +43,28 @@ include_recipe "nginx::repo"
 
 include_recipe "redmine"
 
+amqp_username  = node[:redmine][:amqp][:username]
+
+amqp_user = search('users', 'id:' + amqp_username).first
+if amqp_user.nil?
+  Chef::Log.error "Search for id:#{amqp_username} in 'users' data bag did not return anything!"
+  raise("No entry id#{amqp_username} found in 'users' data bag")
+end
+
+template "#{node['redmine']['deploy_to']}/shared/config/amqp.yml" do
+  source "redmine/amqp.yml"
+  owner "redmine"
+  group "redmine"
+  mode "0664"
+  variables(
+    :server    => node[:rabbitmq][:server],
+    :username  => amqp_username,
+    :password  => amqp_user["password"],
+    :vhost     => node[:redmine][:amqp][:vhost]
+  )
+end
+
+
 ####################################
 # nginx
 ####################################
