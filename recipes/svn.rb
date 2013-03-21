@@ -23,5 +23,6 @@ mysql_database_user node['site-forgetypo3org']['database_svn']['username'] do
   connection mysql_connection_info
   database_name node['redmine']['database']['name']
   privileges [ :select ]
+  password node['site-forgetypo3org']['database_svn']['password']
   action :grant
 end
