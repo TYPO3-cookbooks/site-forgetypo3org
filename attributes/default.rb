@@ -10,6 +10,10 @@ normal['redmine']['deploy']['additional_symlinks'] = {
   "config/amqp.yml" => "config/amqp.yml",
 }
 
+normal['redmine']['deploy']['additional_directories'] = %w{
+  shared/public/headerimages
+}
+
 default['site-forgetypo3org']['amqp']['server'] = nil
 default['site-forgetypo3org']['amqp']['user'] = nil
 default['site-forgetypo3org']['amqp']['vhost'] = nil
