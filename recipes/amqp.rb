@@ -1,14 +1,3 @@
-amqp_username  = node[:redmine][:amqp][:username]
-
-amqp_user = search('users', 'id:' + amqp_username).first
-if amqp_user.nil?
-  Chef::Log.error "Search for id:#{amqp_username} in 'users' data bag did not return anything!"
-  raise("No entry id#{amqp_username} found in 'users' data bag")
-end
-
-
-
-
 # remove pre- from environment (if we're eg in pre-production, which almost equals production)
 environment = node.chef_environment.gsub(/pre-/, '')
 
@@ -16,8 +5,8 @@ environment = node.chef_environment.gsub(/pre-/, '')
 all_password_data = Chef::EncryptedDataBagItem.load("passwords", environment)
 
 # remove . from fqdn
-server_cleaned = node['site-forgetypo3org']['amqp']['server'].gsub(/\./, "")
-user = node['site-svntypo3org']['amqp']['user']
+server_cleaned = node['amqp']['server'].gsub(/\./, "")
+user = node['amqp']['user']
 
 Chef::Log.info "Looking for password rabbitmq.#{server_cleaned}.#{}"
 if all_password_data["rabbitmq"][server_cleaned][user].nil?
@@ -34,9 +23,9 @@ template "#{node['redmine']['deploy_to']}/shared/config/amqp.yml" do
   group "redmine"
   mode "0664"
   variables(
-      :server    => node['site-forgetypo3org']['amqp']['server'],
-      :username  => node['site-forgetypo3org']['amqp']['user'],
+      :server    => node['amqp']['server'],
+      :username  => node['amqp']['user'],
       :password  => amqp_pass,
-      :vhost     => node['site-forgetypo3org']['amqp']['vhost']
+      :vhost     => node['amqp']['vhost']
   )
 end
