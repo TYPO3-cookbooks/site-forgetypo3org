@@ -108,7 +108,7 @@ function redmineLogon($username, $userData, $sso_url) {
 			$lastName = implode('', array_slice($explodedName, -1, 1));
 		} else {
 			$firstName = is_array($explodedName) ? $explodedName[0] : '';
-			$lastName = '';
+			$lastName = 'no-lastname-given';
 		}
 
 		if ($foundUserRecord === FALSE) {
