@@ -1,21 +1,26 @@
-# remove pre- from environment (if we're eg in pre-production, which almost equals production)
-environment = node.chef_environment.gsub(/pre-/, '')
+if Chef::Config[:solo]
+  Chef::Log.warn "AMQP connection will be disabled as running inside of chef-solo!"
+  amqp_pass = "fooo"
 
-# get all passwords for this environment
-all_password_data = Chef::EncryptedDataBagItem.load("passwords", environment)
+else
 
-# remove . from fqdn
-server_cleaned = node['amqp']['server'].gsub(/\./, "")
-user = node['amqp']['user']
+  # remove pre- from environment (if we're eg in pre-production, which almost equals production)
+  environment = node.chef_environment.gsub(/pre-/, '')
 
-Chef::Log.info "Looking for password rabbitmq.#{server_cleaned}.#{}"
-if all_password_data["rabbitmq"][server_cleaned][user].nil?
-  raise "Cannot find password for rabbitmq user '#{user}' in data bag 'passwords/#{node["chef_environment"]}'."
+  # get all passwords for this environment
+  all_password_data = Chef::EncryptedDataBagItem.load("passwords", environment)
+
+  # remove . from fqdn
+  server_cleaned = node['amqp']['server'].gsub(/\./, "")
+  user = node['amqp']['user']
+
+  Chef::Log.info "Looking for password rabbitmq.#{server_cleaned}.#{}"
+  if all_password_data["rabbitmq"][server_cleaned][user].nil?
+    raise "Cannot find password for rabbitmq user '#{user}' in data bag 'passwords/#{node["chef_environment"]}'."
+  end
+
+  amqp_pass = all_password_data["rabbitmq"][server_cleaned][user]
 end
-
-amqp_pass = all_password_data["rabbitmq"][server_cleaned][user]
-
-
 
 template "#{node['redmine']['deploy_to']}/shared/config/amqp.yml" do
   source "redmine/amqp.yml"
