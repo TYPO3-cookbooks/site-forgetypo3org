@@ -35,8 +35,9 @@ end
 # install a recent nginx version
 ####################################
 
-include_recipe "nginx::repo"
-
+if node[:platform] == "debian" && node[:platform_version].to_i < 7
+  include_recipe "nginx::repo"
+end
 
 ####################################
 # include main recipe
