@@ -44,15 +44,7 @@ case node['platform']
     # Configure Dotdeb repos
     # TODO: move this to it's own 'dotdeb' cookbook?
     # http://www.dotdeb.org/instructions/
-    if node.platform_version.to_f >= 5.0
-      apt_repository "dotdeb" do
-        uri "http://packages.dotdeb.org"
-        distribution "stable"
-        components ['all']
-        key "http://www.dotdeb.org/dotdeb.gpg"
-        action :add
-      end
-    else
+    if node.platform_version.to_f <= 6.0
       apt_repository "dotdeb" do
         uri "http://packages.dotdeb.org"
         distribution "oldstable"
@@ -93,15 +85,7 @@ php_fpm 'redmine' do
 end
 
 #############################
-# Suhosin & Security
+# Weird PHP coobkook..
 #############################
-
-package "php5-suhosin"
-
-template "/etc/php5/conf.d/suhosin.ini" do
-  source "php/suhosin.ini"
-  mode 0644
-  notifies :restart, "service[php5-fpm]"
-end
 
 node.set['php']['secure_functions'] = false
