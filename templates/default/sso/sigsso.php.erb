@@ -350,13 +350,16 @@ function getvars(){
   }
 }
 
-function hex2bin($data) {
+/* this function is introduced in PHP 5.4.0 */
+if (!function_exists('hex2bin')) {
+  function hex2bin($data) {
     $len = strlen($data);
     $newdata='';
     for($i=0;$i<$len;$i+=2) {
-        $newdata .=  pack("C",hexdec(substr($data,$i,2)));
+      $newdata .=  pack("C",hexdec(substr($data,$i,2)));
     }
     return $newdata;
+  }
 }
 
 function checkvars(){
