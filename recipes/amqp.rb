@@ -1,5 +1,5 @@
-if not node['site-forgetypo3org']['amqp']['user'].nil? then
-  amqp_pass = node['site-forgetypo3org']['amqp']['user']
+if not node['site-forgetypo3org']['amqp']['password'].nil? then
+  amqp_pass = node['site-forgetypo3org']['amqp']['password']
 
 else
 
