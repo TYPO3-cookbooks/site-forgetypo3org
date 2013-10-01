@@ -16,7 +16,7 @@ else
     amqp_user = node['site-forgetypo3org']['amqp']['user']
     # look for the vault entry like mqtypo3org-forgetypo3org in the passwords data bag
     vault = ChefVault::Item.load("passwords", "#{amqp_server_cleaned}-#{amqp_user}")
-    amqp_pass = vault['amqp_user']
+    amqp_pass = vault["#{amqp_server_cleaned}-#{amqp_user}"]
 
   end
 
