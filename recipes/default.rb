@@ -56,17 +56,17 @@ chef_gem "chef-rewind"
 require 'chef/rewind'
 
 include_recipe "redmine::nginx"
-include_recipe "ssl_certificates"
 
-ssl_certificate node['site-forgetypo3org']['ssl_certificate']
+ssl_certificate node['site-forgetypo3org']['ssl_certificate'] do
+  ca_bundle_combined true
+end
 
-rewind :template => "/etc/nginx/sites-available/#{node.redmine.hostname}" do
-  cookbook_name "site-forgetypo3org"
-  variables(
+nginx_site = resources("template[/etc/nginx/sites-available/#{node.redmine.hostname}]")
+nginx_site.cookbook_name "site-forgetypo3org"
+nginx_site.variables(
     :ssl_certfile => node['ssl_certificates']['path'] + "/" + node['site-forgetypo3org']['ssl_certificate'] + ".crt",
     :ssl_keyfile  => node['ssl_certificates']['path'] + "/" + node['site-forgetypo3org']['ssl_certificate'] + ".key"
   )
-end
 
 template "/etc/nginx/redirects.conf" do
   source "nginx/redirects.erb"
