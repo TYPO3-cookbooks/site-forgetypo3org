@@ -1,3 +1,9 @@
+Open Issues
+=============
+
+- Params for redirectUrl in templates/sso/loginredirect.php have fixed hostname and hostname check with dev.
+- numbers of servers for thin
+
 Going Live
 ==============
 
