@@ -1,0 +1,11 @@
+Going Live
+==============
+
+{as root/xx}
+drop database
+
+{@todo character set on database dump!!!!}
+import database from live
+
+{as redmine}
+export RAILS_ENV=production; bundle exec rake db:migrate:all
