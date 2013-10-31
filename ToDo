@@ -1,4 +1,12 @@
-Features/Patches in Core
+Main Feature Requirements
+======================================================
+* SSO typo3.org
+* Repository creation on request (Rabbit MQ)
+* Membership-Requests (Form/Mail)
+* Customize Startpage (https://github.com/txinto/redmine_startpage ?)
+* Votes on Issues (?)
+
+Analysis of current features/patches in core
 ======================================================
 
 API-Limit (>100)
@@ -34,7 +42,6 @@ User Model
 Visual Feedback if Project is *not* public
  * app/views/projects/show.html.erb
 
-
 Locales
  * - labels for new fields -
 
@@ -47,22 +54,41 @@ Plugins
 ====================================================
 
 flow_design_helpers
+----------------------------------------------------
 
 flow_sso
+----------------------------------------------------
+
 
 flow_start
+----------------------------------------------------
+
 
 forge_engines_patches
+----------------------------------------------------
+
 
 forge_project_settings_menu_xclass
+----------------------------------------------------
+
 
 redmine_backlogs
+----------------------------------------------------
+
 
 redmine_forge_services
+----------------------------------------------------
+
 
 redmine_wiki_css
+----------------------------------------------------
+
 
 typo3_api
+----------------------------------------------------
+
 
 typo3_find_user_by_login
-=
+----------------------------------------------------
+
+
