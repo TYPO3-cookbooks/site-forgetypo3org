@@ -1,0 +1,68 @@
+Features/Patches in Core
+======================================================
+
+API-Limit (>100)
+ * app/controllers/application_controller.rb
+
+Membershiprequest
+ * app/controllers/projects_controller.rb
+ * app/models/mailer.rb 
+ * app/views/mailer/project_membership_request.text.html.rhtml
+ * app/views/projects/show.html.erb
+
+Activity
+ * app/controllers/projects_controller.rb
+
+Link to User with image
+ * app/helpers/application_helper.rb
+ * app/views/users/show.html.erb
+
+Project Model
+ * Quicklinks
+ * Top Bar HeaderImage
+ * Tob Bar BackgroundColor
+ * app/models/project.rb
+
+Feed Atom Builder
+ * ???
+
+User Model
+ * CLA
+ * /app/views/projects/settings/_members.html.erb
+ * app/views/users/show.html.erb
+
+Visual Feedback if Project is *not* public
+ * app/views/projects/show.html.erb
+
+
+Locales
+ * - labels for new fields -
+
+OBSOLETE/DROP
+ * auto_complete_for_user_login 
+ * Mantis Bug Links
+ * Move to project (merge bug)
+
+Plugins
+====================================================
+
+flow_design_helpers
+
+flow_sso
+
+flow_start
+
+forge_engines_patches
+
+forge_project_settings_menu_xclass
+
+redmine_backlogs
+
+redmine_forge_services
+
+redmine_wiki_css
+
+typo3_api
+
+typo3_find_user_by_login
+=
