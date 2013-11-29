@@ -8,6 +8,7 @@ else
     amqp_pass = "fooo"
   else
 
+    # FIXME: replace this with chef-vault cookbook
     # read AMQP password from chef-vault
     chef_gem "chef-vault"
     require 'chef-vault'

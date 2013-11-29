@@ -52,9 +52,6 @@ include_recipe "redmine"
 
 # replace the nginx-site file
 
-chef_gem "chef-rewind"
-require 'chef/rewind'
-
 include_recipe "redmine::nginx"
 
 ssl_certificate node['site-forgetypo3org']['ssl_certificate'] do
