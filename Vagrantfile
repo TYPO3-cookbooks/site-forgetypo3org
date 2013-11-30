@@ -9,17 +9,19 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "forge.typo3.vagrant"
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "debian-7-amd64-base"
+  config.vm.box = "opscode_debian-7.1.0"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://boxes.datenbetrieb.de/debian-7-amd64-base.box"
+  config.vm.box_url = "https://opscode-vm-bento.s3.amazonaws.com/vagrant/opscode_debian-7.1.0_provisionerless.box"
 
   # Assign this VM to a host-only network IP, allowing you to access it
   # via the IP. Host-only networks can talk to the host machine as well as
   # any other machines on the same network, but cannot be accessed (through this
   # network interface) by any external networks.
   config.vm.network :private_network, ip: "33.33.33.10"
+
+  config.omnibus.chef_version = :latest
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -36,7 +38,6 @@ Vagrant.configure("2") do |config|
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
   # config.vm.synced_folder "../data", "/vagrant_data"
-  config.vm.synced_folder "tmp/apt", "/var/cache/apt/archives"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
