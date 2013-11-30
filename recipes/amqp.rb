@@ -8,16 +8,9 @@ else
     amqp_pass = "fooo"
   else
 
-    # FIXME: replace this with chef-vault cookbook
     # read AMQP password from chef-vault
-    chef_gem "chef-vault"
-    require 'chef-vault'
-
-    amqp_server_cleaned = node['site-forgetypo3org']['amqp']['server'].gsub(/\./, '')
-    amqp_user = node['site-forgetypo3org']['amqp']['user']
-    # look for the vault entry like mqtypo3org-forgetypo3org in the passwords data bag
-    vault = ChefVault::Item.load("passwords", "#{amqp_server_cleaned}-#{amqp_user}")
-    amqp_pass = vault["#{amqp_server_cleaned}-#{amqp_user}"]
+    include_recipe "chef-vault"
+    amqp_pass = chef_vault_password(node['site-forgetypo3org']['amqp']['server'], node['site-forgetypo3org']['amqp']['user'])
 
   end
 
