@@ -9,7 +9,7 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "forge.typo3.vagrant"
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "opscode_debian-7.1.0"
+  config.vm.box = "opscode-debian-7.1"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
