@@ -58,8 +58,8 @@ ssl_certificate node['site-forgetypo3org']['ssl_certificate'] do
   ca_bundle_combined true
 end
 
-nginx_site = resources("template[/etc/nginx/sites-available/#{node.redmine.hostname}]")
-nginx_site.cookbook_name "site-forgetypo3org"
+nginx_site = resources("template[/etc/nginx/sites-available/#{node['redmine']['hostname']}]")
+nginx_site.cookbook "site-forgetypo3org"
 nginx_site.variables(
     :ssl_certfile => node['ssl_certificates']['path'] + "/" + node['site-forgetypo3org']['ssl_certificate'] + ".crt",
     :ssl_keyfile  => node['ssl_certificates']['path'] + "/" + node['site-forgetypo3org']['ssl_certificate'] + ".key"
