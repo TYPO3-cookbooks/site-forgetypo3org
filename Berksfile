@@ -2,6 +2,7 @@
 #chef_api "https://chef.typo3.org/clients/", node_name: "pniederlag", client_key: "/srv/fileserver/projects/t3-team-server/certificates/client.pem"
 
 
+cookbook "mysql", github: "opscode-cookbooks/mysql", ref: "1.3.0"
 cookbook "ssl_certificates", github: "TYPO3-cookbooks/ssl_certificates"
 cookbook "redmine", github: "TYPO3-cookbooks/redmine", branch: "feature/berksonwheezy"
 cookbook "php", github: "TYPO3-cookbooks/php", branch: "master"
