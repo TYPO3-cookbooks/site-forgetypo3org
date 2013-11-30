@@ -43,6 +43,7 @@ include_recipe "redmine"
 ####################################
 
 include_recipe "redmine::nginx"
+include_recipe "ssl_certificates"
 
 ssl_certificate node['site-forgetypo3org']['ssl_certificate'] do
   ca_bundle_combined true
