@@ -78,4 +78,3 @@ end
 include_recipe "site-forgetypo3org::amqp"
 include_recipe "site-forgetypo3org::php"
 include_recipe "site-forgetypo3org::sso"
-include_recipe "site-forgetypo3org::svn"
