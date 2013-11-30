@@ -32,14 +32,6 @@ end
 
 
 ####################################
-# install a recent nginx version
-####################################
-
-if node[:platform] == "debian" && node[:platform_version].to_i < 7
-  include_recipe "nginx::repo"
-end
-
-####################################
 # include main recipe
 ####################################
 
@@ -50,14 +42,13 @@ include_recipe "redmine"
 # nginx
 ####################################
 
-# replace the nginx-site file
-
 include_recipe "redmine::nginx"
 
 ssl_certificate node['site-forgetypo3org']['ssl_certificate'] do
   ca_bundle_combined true
 end
 
+# replace the nginx-site file
 nginx_site = resources("template[/etc/nginx/sites-available/#{node['redmine']['hostname']}]")
 nginx_site.cookbook "site-forgetypo3org"
 nginx_site.variables(
@@ -67,7 +58,7 @@ nginx_site.variables(
 
 template "/etc/nginx/redirects.conf" do
   source "nginx/redirects.erb"
-  owner node[:nginx][:user]
+  owner node['nginx']['user']
   mode 0644
 end
 
