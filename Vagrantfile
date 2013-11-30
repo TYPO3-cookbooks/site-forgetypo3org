@@ -95,9 +95,6 @@ Vagrant.configure("2") do |config|
         :database => {
           :password => "mineisred"
         }
-      },
-      :lsb => {
-        :codename => 'wheezy'
       }
     }
 
