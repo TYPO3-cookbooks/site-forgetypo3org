@@ -7,11 +7,24 @@ Open Issues
 Going Live
 ==============
 
+drop database
+~~~~~~~~~~~~~~~~~~~
+
 {as root/xx}
 drop database
 
-{@todo character set on database dump!!!!}
 import database from live
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+{fixing all tables to use utf8 !}
+mysqldump --default-character-set latin1 -u forge -p forge > ~/forge-dump-latin1.sql
+s/SET NAMES latin1/SET NAMES utf8/ [on first lines]
+s/DEFAULT CHARSET=latin1/DEFAULT CHARSET=utf8/ 
+mysql < forge-dump-latin1.sql
+
+
+run migration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 {as redmine}
-export RAILS_ENV=production; bundle exec rake db:migrate:all
+export RAILS_ENV=production; bundle exec rake db:migrate db:migrate:plugins tmp:cache:clear tmp:sessions:clear
