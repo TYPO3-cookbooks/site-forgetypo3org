@@ -7,6 +7,11 @@ Open Issues
 Going Live
 ==============
 
+Etherpad
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+https://notes.typo3.org/p/forge-going-live
+
 drop database
 ~~~~~~~~~~~~~~~~~~~
 
