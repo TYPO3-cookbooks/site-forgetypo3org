@@ -3,6 +3,8 @@ Open Issues
 
 - Params for redirectUrl in templates/sso/loginredirect.php have fixed hostname and hostname check with dev.
 - numbers of servers for thin
+- dev/vagrant setup (domain/sso-login)
+- start/about action has been removed. some wiki content refers to the route start/about
 
 Going Live
 ==============
