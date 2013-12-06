@@ -5,6 +5,7 @@ Open Issues
 - numbers of servers for thin
 - dev/vagrant setup (domain/sso-login)
 - start/about action has been removed. some wiki content refers to the route start/about
+- route start/CreateProject must be start/create_project now. Needs update in wiki content, http://forge.typo3.org/projects/typo3cms http://forge.typo3.org/projects/extensions
 
 Going Live
 ==============
