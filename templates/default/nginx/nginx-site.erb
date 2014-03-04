@@ -48,7 +48,13 @@ server {
         open_file_cache_min_uses 2;
         open_file_cache_errors off;
     }
-
+    <% if node.chef_environment != 'production' %>
+    # robots.txt for chef environment != 'production'
+    location = /robots.txt {
+        root = /etc/nginx;
+        try_files /robots.txt;
+    }
+    <% end %>
     ## Support for favicon. Return an 1x1 transparent GIF if it doesn't
     ## exist.
     location = /favicon.ico {

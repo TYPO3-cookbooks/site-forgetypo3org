@@ -68,6 +68,11 @@ template "/etc/nginx/redirects.conf" do
   mode 0644
 end
 
+template "/etc/nginx/robots.txt" do
+  source "nginx/robots.erb"
+  owner node['nginx']['user']
+  mode 0644
+e
 ####################################
 # other recipes
 ####################################
