@@ -72,7 +72,8 @@ template "/etc/nginx/robots.txt" do
   source "nginx/robots.erb"
   owner node['nginx']['user']
   mode 0644
-e
+end
+
 ####################################
 # other recipes
 ####################################
