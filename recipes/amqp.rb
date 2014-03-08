@@ -16,6 +16,18 @@ else
 
 end
 
+Chef::Log.info "AMQP user info will fetched from data_bags for #{node['site-forgetypo3org']['amqp']['user']}"
+
+user_data_bag = search(:users, "id:#{node['site-forgetypo3org']['amqp']['user']}")
+if user_data_bag.empty?
+  # we didn't find the user that is configured via node[site-forgetypo3org][amqp][user] in data_bags/user"
+  # If you read this you probably have to add a json for the mentioned user in data_bags/users
+  msg = 'AMQP user "' + node['site-forgetypo3org']['amqp']['user'] + '" could not be found in data_bags/users. Either add the user or change the attribute node["site-forgetypo3org"]["amqp"]["user"]'
+  Chef::Log.error msg
+  raise msg
+end
+
+
 template "#{node['redmine']['deploy_to']}/shared/config/amqp.yml" do
   source "redmine/amqp.yml"
   owner "redmine"
