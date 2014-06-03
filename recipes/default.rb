@@ -66,6 +66,9 @@ template "/etc/nginx/redirects.conf" do
   source "nginx/redirects.erb"
   owner node['nginx']['user']
   mode 0644
+  variables({
+    :sso_enabled => node['site-forgetypo3org']['sso_enabled']
+  })
 end
 
 template "/etc/nginx/robots.txt" do
