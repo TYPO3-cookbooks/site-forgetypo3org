@@ -9,7 +9,7 @@ else
   else
 
     # read AMQP password from chef-vault
-    #include_recipe "chef-vault"
+    include_recipe "t3-chef-vault"
     amqp_pass = chef_vault_password(node['site-forgetypo3org']['amqp']['server'], node['site-forgetypo3org']['amqp']['user'])
 
   end
