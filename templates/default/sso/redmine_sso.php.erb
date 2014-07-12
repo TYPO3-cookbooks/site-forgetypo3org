@@ -94,7 +94,7 @@ function redmineLogon($username, $userData, $sso_url) {
 		    $userData['tx_t3ocla_hassignedcla'] = 0;
 		}
 		
-		$dbh = new PDO('mysql:host='. $redmineConf['databaseHost'] . ';dbname=' . $redmineConf['databaseName'], $redmineConf['databaseUsername'], $redmineConf['databasePassword']);
+		$dbh = new PDO('mysql:host='. $redmineConf['databaseHost'] . ';dbname=' . $redmineConf['databaseName'] . ';charset=utf8', $redmineConf['databaseUsername'], $redmineConf['databasePassword']);
 
 		$foundUserRecord = FALSE;
 		$statement = $dbh->prepare('SELECT id, login, firstname, lastname, mail, salted_password, hashed_password FROM users WHERE login=?');
