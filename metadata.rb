@@ -6,7 +6,7 @@ description      "Installs/Configures forge.typo3.org"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version "0.0.13"
 
-depends "redmine"
+depends "redmine", "~> 0.1.4"
 depends "nginx"
 depends "ssl_certificates"
 depends "mysql"

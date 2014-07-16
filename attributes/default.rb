@@ -12,6 +12,8 @@ default['redmine']['branch'] = '1.4'
 default['redmine']['source']['repository'] = 'git://github.com/TYPO3-infrastructure/redmine.git'
 default['redmine']['source']['reference'] = '1.4-stable-typo3'
 
+default['redmine']['thin_servers'] = node['cpu']['total']
+
 # override defaults for production
 if node.chef_environment == 'production'
   default['site-forgetypo3org']['amqp'] = {
