@@ -6,7 +6,8 @@ $absoluteRefererUrl = $_SERVER["HTTP_REFERER"];
 
 if (!empty($absoluteRefererUrl) && filter_var($absoluteRefererUrl, FILTER_VALIDATE_URL)) {
 	$parsedUrl = parse_url($absoluteRefererUrl);
-	if ($parsedUrl['host'] === 'dev.forge.typo3.org') {
+	// host must match *.forge.typo3.org in order to set returnTo
+	if (preg_match('/^[a-z0-9\.]*forge\.typo3\.org$/', $parsedUrl['host']) === 1) {
 		$redirectUrl .= '?returnTo=' . rawurlencode(ltrim($parsedUrl['path'], '/'));
 	}
 
