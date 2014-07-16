@@ -1,7 +1,12 @@
 rvm:
   - 1.9.3
   - 2.0.0
+env:
+  - USE_SYSTEM_GECODE=1
+bundler_args: --without integration --path vendor/bundle --binstubs --full-index
+before_install:
+  - sudo apt-get install -y -qq libgecode-dev
 before_script:
-  - bundle exec berks install
+  - bin/berks install
 script:
-  - bundle exec foodcritic -f any .
+  - bin/foodcritic -f any .
