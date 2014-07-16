@@ -1,6 +1,7 @@
 # generic defaults
 default['site-forgetypo3org']['ssl_certificate'] = 'wildcard.typo3.org'
 
+default['site-forgetypo3org']['sso_enabled'] = true
 
 default['site-forgetypo3org']['amqp']['server'] = nil
 default['site-forgetypo3org']['amqp']['user'] = nil
