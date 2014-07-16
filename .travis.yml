@@ -1,10 +1,11 @@
 rvm:
   - 1.9.3
   - 2.0.0
-env: USE_SYSTEM_GECODE=1
+env:
+  - USE_SYSTEM_GECODE=1
 bundler_args: --without integration --path vendor/bundle --binstubs
 before_install:
-    - sudo apt-get install -qq libgecode-dev
+  - sudo apt-get install -y -qq libgecode-dev
 before_script:
   - bin/berks install
 script:
