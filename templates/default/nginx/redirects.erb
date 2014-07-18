@@ -7,6 +7,7 @@ rewrite ^/my/password$ http://typo3.org/community/your-account/loginlogout/user 
 <% end -%>
 
 rewrite ^/projects/team-infrastructure(|/.*)$			/projects/team-server-public$1			permanent;
+rewrite ^/projects/team-t3o-relaunch-week(|/.*)$		/projects/team-t3o$1				permanent;
 rewrite ^/projects/typo3-v5-core(|/.*)$				/projects/typo3neos-team$1			permanent;
 rewrite ^/projects/typo3-v5(|/.*)$				/projects/typo3neos$1				permanent;
 rewrite ^/projects/typo3v4(|/.*)$				/projects/typo3-cms$1				permanent;
