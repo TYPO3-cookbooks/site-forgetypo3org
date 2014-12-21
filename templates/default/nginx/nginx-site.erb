@@ -31,6 +31,9 @@ server {
     error_page 404 /404.html;
     error_page 500 502 503 504 /500.html;
 
+    # allow larger uploads
+    client_max_body_size 10M;
+
     # prevent click-jacking http://forge.typo3.org/issues/54837
     add_header X-Frame-Options SAMEORIGIN;
 
