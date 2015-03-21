@@ -34,6 +34,12 @@ end
   end
 end
 
+# make sure the scripts directory is available
+directory "#{node['redmine']['deploy_to']}/current/public/scripts/" do
+  owner "redmine"
+  group "redmine"
+end
+
 template "#{node['redmine']['deploy_to']}/current/public/scripts/sigsso.php" do
   source "sso/sigsso.php.erb"
   owner "redmine"
