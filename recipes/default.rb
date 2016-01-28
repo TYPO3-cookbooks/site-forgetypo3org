@@ -30,11 +30,6 @@
   package pkg
 end
 
-# for our flow_start plugin that creates the repos there
-directory "/var/git/repositories" do
-  owner "redmine"
-  recursive true
-end
 
 ####################################
 # include main recipe
@@ -42,6 +37,15 @@ end
 
 include_recipe "redmine"
 
+####################################
+# directory for git repos
+####################################
+
+# for our flow_start plugin that creates the repos there
+directory "/var/git/repositories" do
+  owner "redmine"
+  recursive true
+end
 
 ####################################
 # nginx
