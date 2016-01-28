@@ -4,7 +4,7 @@ maintainer_email "steffen.gebert@typo3.org"
 license          "Apache 2.0"
 description      "Installs/Configures forge.typo3.org"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version "0.0.25"
+version          "0.0.27"
 
 depends "site-gittypo3org"
 depends "t3-mysql",         "~> 5.0.0"
