@@ -7,7 +7,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.0.28"
 
 depends "t3-mysql",         "~> 5.1.0"
-depends "redmine",          "~> 0.2.3"
+depends "redmine",          "~> 0.3.1"
 depends "ssl_certificates", "~> 1.1.3"
 depends "t3-chef-vault",    "~> 1.0.1"
 
