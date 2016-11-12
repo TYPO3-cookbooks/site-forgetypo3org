@@ -11,7 +11,7 @@ depends "redmine",          "~> 0.3.1"
 depends "ssl_certificates", "~> 1.1.3"
 depends "t3-chef-vault",    "~> 1.0.1"
 
-depends "nginx",            "= 1.6.0"
+depends "nginx",            "~> 2.8.0"
 depends "database",         "= 2.3.1"
 depends "php",              "= 1.1.2"
 depends "ohai",             ">= 4.0.0"
