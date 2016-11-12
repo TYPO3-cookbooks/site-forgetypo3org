@@ -9,7 +9,7 @@ default['site-forgetypo3org']['amqp']['vhost'] = nil
 
 default['redmine']['hostname'] = 'forge.typo3.org'
 default['redmine']['source']['repository'] = 'git://github.com/TYPO3-infrastructure/redmine.git'
-default['redmine']['source']['reference'] = '1.4-stable-typo3'
+default['redmine']['source']['reference'] = '3.3-stable-typo3'
 
 default['redmine']['thin_servers'] = '4'
 
