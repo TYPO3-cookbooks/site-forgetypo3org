@@ -1,3 +1,6 @@
+#<> Ensure that apt cache is up to date at compile time (build-essential)
+default['apt']['compile_time_update'] = true
+
 # generic defaults
 default['site-forgetypo3org']['ssl_certificate'] = 'wildcard.typo3.org'
 
