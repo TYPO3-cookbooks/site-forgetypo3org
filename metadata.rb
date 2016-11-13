@@ -15,4 +15,3 @@ depends "t3-chef-vault",    "~> 1.0.1"
 
 depends "nginx",            "~> 2.8.0"
 depends "php",              "= 1.1.2"
-depends "ohai",             ">= 4.0.0"
