@@ -25,13 +25,7 @@ include_recipe "t3-base"
 # prerequisites
 ####################################
 
-%w{
-  libxslt-dev
-  libxml2-dev
-}.each do |pkg|
-  package pkg
-end
-
+package ['libxslt-dev', 'libxml2-dev']
 
 ####################################
 # include main recipe
@@ -54,19 +48,10 @@ end
 ####################################
 
 include_recipe "redmine::nginx"
-include_recipe "ssl_certificates"
-
-ssl_certificate node['site-forgetypo3org']['ssl_certificate'] do
-  ca_bundle_combined true
-end
 
 # replace the nginx-site file
 nginx_site = resources("template[/etc/nginx/sites-available/#{node['redmine']['hostname']}]")
-nginx_site.cookbook "site-forgetypo3org"
-nginx_site.variables(
-    :ssl_certfile => node['ssl_certificates']['path'] + "/" + node['site-forgetypo3org']['ssl_certificate'] + ".crt",
-    :ssl_keyfile  => node['ssl_certificates']['path'] + "/" + node['site-forgetypo3org']['ssl_certificate'] + ".key"
-  )
+nginx_site.cookbook cookbook_name
 
 template "/etc/nginx/redirects.conf" do
   source "nginx/redirects.erb"
@@ -87,6 +72,5 @@ end
 # other recipes
 ####################################
 
-include_recipe "site-forgetypo3org::amqp"
 include_recipe "site-forgetypo3org::php"
 include_recipe "site-forgetypo3org::sso"

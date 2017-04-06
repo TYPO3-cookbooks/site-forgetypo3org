@@ -17,17 +17,13 @@ suites:
       - recipe[site-forgetypo3org::default]
     attributes:
       dev_mode: true
+      redmine:
+        hostname: forge.vagrant
+        thin_servers: 2
       site-forgetypo3org:
-        ssl_certificate: wildcard.vagrant
-        amqp:
-          server: mq.vagrant
-          user: forge
-      site-gittypo3org:
-        amqp:
-          server: mq.vagrant
-          user: forge
-      gitweb:
-        ssl_certificate: wildcard.vagrant
+        sso_enabled: true
+      mysql:
+        server_root_password: root
     driver_config:
       network:
       - ["private_network", {ip: "192.168.88.89"}]
