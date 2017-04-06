@@ -22,8 +22,9 @@
 # PHP5-FPM
 #############################
 
-include_recipe "php::fpm"
 package "php5-mysql"
+
+include_recipe "php::fpm"
 
 #############################
 # PHP5-FPM instance
