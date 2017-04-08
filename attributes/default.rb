@@ -15,3 +15,5 @@ override['redmine']['deploy']['additional_directories'] = %w{
   shared/public/headerimages
 }
 
+# Send mails for user "redmine" to "root"
+default['postfix']['aliases']['redmine'] = 'root'
