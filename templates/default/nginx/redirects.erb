@@ -1,10 +1,5 @@
 # old URLs /projects/show/extension-blabla are not supported in redmine 1.4
 rewrite ^/projects/show/(.*)$ /projects/$1 permanent;
-<% if @sso_enabled -%>
-rewrite ^/login$ /scripts/loginredirect.php last;
-rewrite ^/account/register$ http://typo3.org/community/your-account/loginlogout last;
-rewrite ^/my/password$ http://typo3.org/community/your-account/loginlogout/user last;
-<% end -%>
 
 rewrite ^/projects/team-infrastructure(|/.*)$			/projects/team-server-public$1			permanent;
 rewrite ^/projects/team-t3o-relaunch-week(|/.*)$		/projects/team-t3o$1				permanent;

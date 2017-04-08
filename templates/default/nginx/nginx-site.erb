@@ -60,16 +60,6 @@ server {
         empty_gif;
     }
 
-    location ~ ^/scripts/.*\.php$ {
-      try_files $uri =404;
-
-      fastcgi_pass 127.0.0.1:9000;
-      # needed for nginx in Debian squeeze
-      fastcgi_param   SCRIPT_FILENAME         $request_filename;
-
-      include fastcgi_params;
-    }
-
     ## Location
     location @thin {
       proxy_http_version 1.1;

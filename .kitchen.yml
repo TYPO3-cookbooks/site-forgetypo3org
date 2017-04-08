@@ -20,8 +20,6 @@ suites:
       redmine:
         hostname: forge.vagrant
         thin_servers: 2
-      site-forgetypo3org:
-        sso_enabled: true
       mysql:
         server_root_password: root
     driver_config:

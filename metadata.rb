@@ -14,4 +14,3 @@ depends "ssl_certificates", "~> 1.1.3"
 depends "t3-chef-vault",    "~> 1.0.1"
 
 depends "chef_nginx",       "= 5.1.3"
-depends "php",              "= 1.1.2"

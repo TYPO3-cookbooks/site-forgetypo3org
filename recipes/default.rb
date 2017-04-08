@@ -57,9 +57,7 @@ template "/etc/nginx/redirects.conf" do
   source "nginx/redirects.erb"
   owner node['nginx']['user']
   mode 0644
-  variables({
-    :sso_enabled => node['site-forgetypo3org']['sso_enabled']
-  })
+  notifies :reload, 'service[nginx]'
 end
 
 template "/etc/nginx/robots.txt" do
@@ -67,10 +65,3 @@ template "/etc/nginx/robots.txt" do
   owner node['nginx']['user']
   mode 0644
 end
-
-####################################
-# other recipes
-####################################
-
-include_recipe "site-forgetypo3org::php"
-include_recipe "site-forgetypo3org::sso"

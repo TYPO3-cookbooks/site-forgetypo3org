@@ -16,5 +16,5 @@ control 'redmine-1' do
     its('exit_status') { should eq 0 }
     its('stdout') { should include '<title>Redmine</title>' }
   end
-  
+
 end
