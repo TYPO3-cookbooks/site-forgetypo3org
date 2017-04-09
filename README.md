@@ -16,3 +16,9 @@ redmine@/srv/redmine/current$ RAILS_ENV=production bundle exec bin/rails runner 
 ```
 
 As long as no exception occurs, it should have worked (there's some help text shown..).
+
+## Git Repositories
+
+The Git repositories stored in `/var/git/repositories` are updated by the Gerrit server through its replication.
+
+To allow these SSH logins, the public key from the Gerrit server (`/var/gerrit/.ssh/id_rsa-replication-forge.typo3.org.pub`) has to be manually copied to the forge server's `/var/git/.ssh/authorized_keys`. 
