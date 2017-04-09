@@ -19,7 +19,7 @@ suites:
       dev_mode: true
       redmine:
         hostname: forge.vagrant
-        thin_servers: 2
+        thin_servers: 1
       mysql:
         server_root_password: root
     driver_config:
