@@ -37,11 +37,30 @@ include_recipe "redmine"
 # directory for git repos
 ####################################
 
-# for our flow_start plugin that creates the repos there
-directory "/var/git/repositories" do
-  owner "redmine"
-  recursive true
+group 'git'
+
+user 'git' do
+  home '/var/git'
+  gid 'git'
+  manage_home true
+  action :create
 end
+
+directory '/var/git/.ssh' do
+  owner 'git'
+end
+
+file '/var/git/.ssh/authorized_keys' do
+  owner 'git'
+  content 'TODO copy pubkey from Gerrit server'
+  action :create_if_missing
+end
+
+# location of the git repos
+directory '/var/git/repositories' do
+  owner 'redmine'
+end
+
 
 ####################################
 # nginx
