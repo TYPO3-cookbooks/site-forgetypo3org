@@ -11,9 +11,6 @@ control 'redmine-1' do
     its('protocols') { should include 'tcp'}
   end
 
-  # sorry for that.. rails needs some time to boot
-  sleep 10
-
   # port 80 HTML
   describe command('curl http://localhost:80') do
     its('exit_status') { should eq 0 }
