@@ -59,6 +59,7 @@ end
 # location of the git repos
 directory '/var/git/repositories' do
   owner 'redmine'
+  group 'git'
 end
 
 
