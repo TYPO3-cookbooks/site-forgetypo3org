@@ -60,6 +60,8 @@ end
 directory '/var/git/repositories' do
   owner 'redmine'
   group 'git'
+  # must be writeable also for the 'git' user (based on the group)
+  mode 0775
 end
 
 
