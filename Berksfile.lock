@@ -89,7 +89,7 @@ GRAPH
   python (1.4.6)
     build-essential (>= 0.0.0)
     yum-epel (>= 0.0.0)
-  redmine (1.0.1)
+  redmine (1.0.2)
     build-essential (>= 0.0.0)
     chef-sugar (>= 0.0.0)
     chef_nginx (< 6.0.0)
